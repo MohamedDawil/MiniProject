@@ -1,0 +1,27 @@
+﻿@model MiniProject.ViewModels.IndexVM[]
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h2>Index</h2>
+    @{
+        foreach (var item in Model)
+        {
+    <h1>@item.Name</h1><br />
+    @item.Image<br />
+            @item.Url<br />
+            @item.Date
+
+        }
+    }
+</body>
+</html>
+
