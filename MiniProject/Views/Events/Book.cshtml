@@ -1,0 +1,22 @@
+﻿@model BookVM
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Book";
+}
+<!-- Events Section -->
+<section class="about-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="text-white mb-4 col-lg-12 mx-auto">
+                @{
+                    @Model.PresaleName
+                }
+            </div>
+        </div>
+        <img src="@Url.Content("~/Content/img/ipad.png")" class="img-fluid" alt="">
+    </div>
+</section>
+
+@section scripts{
+
+}

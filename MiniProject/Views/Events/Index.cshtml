@@ -1,27 +1,76 @@
-﻿@model MiniProject.ViewModels.IndexVM[]
+﻿@model IndexVM[]
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h2>Index</h2>
-    @{
-        foreach (var item in Model)
-        {
-    <h1>@item.Name</h1><br />
-    @item.Image<br />
-            @item.Url<br />
-            @item.Date
+<!-- Events Section -->
+<section class="about-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="text-white mb-4 col-lg-12 mx-auto">
 
-        }
-    }
-</body>
-</html>
+                <table class="table">
+                    <tbody>
+                        @{
+                            var colIsEven = 0;
+
+                            foreach (var item in Model)
+                            {
+                                if (colIsEven % 2 == 0)
+                                {
+                                    @:<tr>
+                                    }
+
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="@item.Image" style="width: 250px; height: auto" />
+
+                                                </td>
+                                                <td>
+                                                    <a href="@item.Url">@item.Name</a>
+
+                                                </td>
+                                                <td>
+                                                    @item.Date
+
+                                                </td>
+                                                <td>
+                                                    <a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+
+                                    if (colIsEven % 2 == 1)
+                                    {
+                                    @:</tr>
+                                }
+                                colIsEven++;
+                            }
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <img src="@Url.Content("~/Content/img/ipad.png")" class="img-fluid" alt="">
+    </div>
+</section>
+@section scripts{
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="@Url.Content("~/Content/vendor/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <!-- Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/vendor/jquery-easing/jquery.easing.min.js")"></script>
+    <!-- Custom scripts for this template -->
+    <script src="@Url.Content("~/Content/js/grayscale.min.js")"></script>
+}
+
 

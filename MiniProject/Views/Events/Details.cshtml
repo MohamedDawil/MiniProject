@@ -1,0 +1,62 @@
+﻿@model DetailVM
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Details";
+}
+<!-- Events Section -->
+<section  class="about-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="text-white mb-4 col-lg-12 mx-auto">
+                <h1>@Model.Name</h1>
+                <br>
+                <img src="@Model.Image" style="width: 250px; height: auto;">
+                <br>
+                <a href="@Model.Url" target="_blank">Book tickets</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+                                Start date:
+                            </td>
+                            <td>
+                                End date:
+                            </td>
+                            <td>
+                                Event name:
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in Model.Presales)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.StartDateTime
+                                    </td>
+                                    <td>
+                                        @item.EndDateTime
+                                    </td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Events" asp-action="Book" asp-route-id="@Model.Id" asp-route-name="@item.Name">Book event</a>
+                                        
+                                    </td>
+                                </tr>   
+                            }
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <img src="@Url.Content("~/Content/img/ipad.png")" class="img-fluid" alt="">
+    </div>
+</section>
+
+@section scripts{
+
+}
